@@ -4,7 +4,7 @@ en:
       book:
         author: Author
         memo: Memo
-        picture: Pictute
+        picture: Picture
         title: Title
   books:
     create:
@@ -22,10 +22,10 @@ en:
       title: New Book
   layouts:
     application:
-      booksapp: BooksApp
+      application_name: BooksApp
   links:
     back: Back
     destroy: Destroy
     edit: Edit
-    newbook: New
+    new: New
     show: Show
