@@ -1,16 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
 
-  private
+  protected
 
-  def after_sign_in_path_for(_resource)
-    books_path
-  end
-
-  # Overwriting the sign_out redirect path method
-  def after_sign_out_path_for(_resource)
-    new_user_session_path
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:account_update, keys: [:post_code, :address, :self_introduction])
   end
 end
