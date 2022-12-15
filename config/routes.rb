@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   }
   get "users/show" => "users#show"
   get "users" => "users#index"
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
