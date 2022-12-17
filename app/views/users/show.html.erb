@@ -1,23 +1,24 @@
 <h1>Users#show</h1>
 <p>
-  <strong>email</strong>
+  <strong><%= User.human_attribute_name(:email) %></strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>self introduction</strong>
+  <strong><%= User.human_attribute_name(:self_introduction) %></strong>
   <%= @user.self_introduction %>
 </p>
 
 <p>
-  <strong>post code</strong>
+  <strong><%= User.human_attribute_name(:post_code) %></strong>
   <%= @user.post_code %>
 </p>
 
 <p>
-  <strong>address</strong>
+  <strong><%= User.human_attribute_name(:address) %></strong>
   <%= @user.address %>
 </p>
-
-<%= link_to 'edit', edit_user_registration_path(@user) %> |
-<%= link_to 'back', users_path %>
+<% if current_user.id == @user.id %>
+  <%= link_to link_to t('activerecord.attributes.links.edit'), edit_user_registration_path %> |
+<% end %>
+<%= link_to link_to t('activerecord.attributes.links.back'), users_path %>

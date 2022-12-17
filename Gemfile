@@ -33,6 +33,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'devise-i18n'
   gem 'erb_lint', require: false
   gem 'faker'
   gem 'i18n_generators'

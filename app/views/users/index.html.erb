@@ -1,11 +1,11 @@
-<h1>User</h1>
+<h1><%= User.model_name.human %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>email</th>
-      <th>self introduction</th>
-      <th colspan="2"></th>
+      <th><%= User.human_attribute_name(:email) %> </th>
+      <th><%= User.human_attribute_name(:self_introduction) %> </th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -14,8 +14,7 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.self_introduction %></td>
-        <td><%= link_to "詳細表示", users_show_path(user) %></td>
-        <td><%= link_to"編集", edit_user_registration_path(user) %></td>
+        <td><%= link_to t('activerecord.attributes.links.show'), users_show_path(user) %></td>
       </tr>
     <% end %>
   </tbody>
