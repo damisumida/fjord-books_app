@@ -12,9 +12,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:format])
   end
-
-  # Only allow a list of trusted parameters through.
-  def _params
-    params.require(:book).permit(:title, :memo, :author, :picture)
-  end
 end
