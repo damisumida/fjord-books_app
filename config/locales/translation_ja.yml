@@ -23,9 +23,9 @@ ja:
         show: 詳細表示
         edit: 編集
         back: 戻る
-
   layouts:
     application:
+      books: 本一覧
       title: 書籍管理アプリ
       logged_in_as: "%{email}としてログインしました。"
       edit_profile: プロフィール編集
