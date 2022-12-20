@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_05_045546) do
+ActiveRecord::Schema.define(version: 2022_12_20_084508) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2022_12_05_045546) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
     t.integer "post_code"
     t.text "address"
     t.text "self_introduction"
