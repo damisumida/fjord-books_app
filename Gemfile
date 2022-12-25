@@ -35,6 +35,7 @@ end
 
 group :development do
   gem 'erb_lint', require: false
+  gem 'i18n_generators'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop-fjord', require: false
@@ -59,3 +60,5 @@ gem 'net-pop'
 gem 'net-smtp'
 
 gem 'carrierwave'
+
+gem 'rails-i18n'
