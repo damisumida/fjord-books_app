@@ -2,10 +2,34 @@ ja:
   activerecord:
     models:
       book: 本  #g
-
+      user: ユーザー  #g
     attributes:
       book:
         author: 著者  #g
         memo: メモ  #g
         picture: 画像  #g
         title: 題名  #g
+      user:
+        address: 住所  #g
+        email: Eメール  #g
+        encrypted_password: 暗号化パスワード  #g
+        name: 名前  #g
+        post_code: 郵便番号  #g
+        remember_created_at: ログイン記憶時刻  #g
+        reset_password_sent_at: パスワードリセット送信時刻  #g
+        reset_password_token: パスワードリセット用トークン  #g
+        self_introduction: 自己紹介  #g
+      links:
+        show: 詳細表示
+        edit: 編集
+        back: 戻る
+  layouts:
+    application:
+      books: 本一覧
+      title: 書籍管理アプリ
+      logged_in_as: "%{email}としてログインしました。"
+      edit_profile: プロフィール編集
+      logout: ログアウト
+      users: ユーザ一覧
+      sign_up: 新規登録
+      sign_in: ログイン
