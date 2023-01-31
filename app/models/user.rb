@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  # フォローをした、されたの関係
+  # フォローをした、されたの関係 activererationship
   # フォロワーIDとユーザIDの関係
   has_many :follower, class_name: "Follow", foreign_key: "follower_id", dependent: :destroy
   # フォローIDとユーザIDの関係
@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   # 一覧画面で使う
   # フォロー一覧
-  has_many :followings, through: :follower_relationships, source: :follower
+  has_many :followings, through: :following, source: :follower
   # フォロワー一覧
-  has_many :followers, through: :following_relationships, source: :following
+  has_many :followers, through: :follower, source: :following
 end

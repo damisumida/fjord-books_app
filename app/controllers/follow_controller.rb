@@ -7,7 +7,17 @@ class FollowController < ApplicationController
 
   def destroy
     follow = Follow.find_by(follower_id: params[:user_id], following_id: current_user.id)
-    follow.destroy
+    follow.delete
     redirect_to request.referer
+  end
+
+  def follower_index
+    user = User.find(params[:user_id])
+    @users = user.followers
+  end
+
+  def index
+    user = User.find(params[:user_id])
+    @users = user.followings
   end
 end
