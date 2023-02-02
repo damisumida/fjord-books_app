@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FollowController < ApplicationController
   def create
     user = current_user
