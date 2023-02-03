@@ -35,7 +35,7 @@
 
 <p>
   <strong><%= t('follow.follow_num') %>:</strong>
-  <%= link_to "#{@following_num}", user_following_index_path(@user), method: 'get' %>
+  <%= link_to "#{@following_num}", user_followings_path(@user), method: 'get' %>
 </p>
 
 <p>
