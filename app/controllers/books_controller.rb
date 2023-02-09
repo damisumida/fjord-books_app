@@ -2,6 +2,7 @@
 
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
+  before_action :set_comments, only: %i[show]
 
   # GET /books
   # GET /books.json
@@ -66,6 +67,10 @@ class BooksController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_book
     @book = Book.find(params[:id])
+  end
+
+  def set_comments
+    @comments = @book.comments
   end
 
   # Only allow a list of trusted parameters through.
