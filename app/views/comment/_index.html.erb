@@ -1,0 +1,22 @@
+<h2>Comment<h2>
+
+<table>
+  <thead>
+    <th>Comment</th>
+    <th>User Name</th>
+    <th>Date</th>
+    <th colspan="2"></th>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.body %></td>
+        <td><%= comment.user.name %></td>
+        <td><%= l comment.updated_at %></td>
+        <td>update_link</td>
+        <td>destroy_link</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
