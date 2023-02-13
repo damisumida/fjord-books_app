@@ -1,6 +1,4 @@
-class CommentController < ApplicationController
-  before_action :set_user
-
+class CommentsController < ApplicationController
   def create
     # user = User.find(current_user.id)
     # content = Book.find(book_id)
