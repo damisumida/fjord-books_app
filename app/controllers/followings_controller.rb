@@ -19,6 +19,6 @@ class FollowingsController < ApplicationController
 
   def index
     user = User.find(params[:user_id])
-    @users = user.followings
+    @users = user.followings.with_attached_avatar.order(:id)
   end
 end
