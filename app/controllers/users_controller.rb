@@ -7,5 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @follower_num = @user.followers.size
+    @following_num = @user.followings.size
   end
 end
