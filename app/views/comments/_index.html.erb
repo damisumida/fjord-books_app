@@ -14,7 +14,6 @@
         <td><%= comment.body %></td>
         <td><%= comment.user.name %></td>
         <td><%= l comment.updated_at %></td>
-        <td>update_link</td>
         <% if comment.content_type == "Report"%>
           <td><%= link_to t('views.common.destroy'), report_comments_path(report_id: content.id, id: comment.id), method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
         <% elsif comment.content_type == "Book"%>
