@@ -24,4 +24,4 @@
 <%= link_to t('views.common.back'), books_path %>
 
 <%= render 'comments/index' %>
-<%= render 'comments/form', comment: @comment %>
+<%= render 'comments/form', content: @book, comment: @comment %>
