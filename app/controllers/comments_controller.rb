@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: %i[destroy]
+
   def create
     user = User.find(current_user.id)
     comment = Comment.new(comment_params)
@@ -15,8 +17,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    # comment = Comment.find(comment_id)
-    # comment.destroy!
+    @comment.destroy
+    redirect_to @content, notice: t('controllers.common.notice_destroy', name: 'comment')
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 
   def comment_params

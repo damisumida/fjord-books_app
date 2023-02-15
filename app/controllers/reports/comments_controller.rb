@@ -1,5 +1,5 @@
 class Reports::CommentsController < CommentsController
-  before_action :set_content, only: %i[create]
+  before_action :set_content, only: %i[create destroy]
 
   private
 
