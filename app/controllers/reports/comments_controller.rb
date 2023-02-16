@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Reports::CommentsController < CommentsController
-  before_action :set_content, only: %i[create destroy]
+  before_action :set_content
 
   private
 
