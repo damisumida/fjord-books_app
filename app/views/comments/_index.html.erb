@@ -1,11 +1,11 @@
-<h2>Comment<h2>
+<h2><%= Comment.model_name.human %><h2>
 
 <table>
   <thead>
     <tr>
-      <th>Comment</th>
-      <th>User Name</th>
-      <th>Date</th>
+      <th><%= Comment.human_attribute_name(:body) %></th>
+      <th><%= Comment.human_attribute_name(:user_name) %></th>
+      <th><%= Comment.human_attribute_name(:updated_date) %></th>
       <th colspan="1"></th>
     </tr>
   </thead>

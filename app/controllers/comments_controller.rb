@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     comment.user = user
     comment.content = @content
     comment.save
-    redirect_to @content, notice: t('.notice')
+    redirect_to @content, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
   end
 
   def update
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to @content, notice: t('controllers.common.notice_destroy', name: 'comment')
+    redirect_to @content, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   def set_comment
