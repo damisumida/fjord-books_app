@@ -11,14 +11,39 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'Foo.Bar', user.name_or_email
   end
 
-  test '#follow_to_unfollow' do
+  test '#following?' do
     me = User.create!(email: 'me@example.com', password: 'passsword')
     she = User.create!(email: 'she@example.com', password: 'passsword')
 
     assert_not me.following?(she)
-    me.follow(she)
+    me.active_relationships.find_or_create_by!(following_id: she.id)
     assert me.following?(she)
-    me.unfollow(she)
+  end
+
+  test '#followed_by?' do
+    me = User.create!(email: 'me@example.com', password: 'passsword')
+    she = User.create!(email: 'she@example.com', password: 'passsword')
+
     assert_not me.following?(she)
+    me.active_relationships.find_or_create_by!(following_id: she.id)
+    assert me.following?(she)
+  end
+
+  test '#follow' do
+    me = User.create!(email: 'me@example.com', password: 'passsword')
+    she = User.create!(email: 'she@example.com', password: 'passsword')
+
+    assert_not me.active_relationships.where(following_id: she.id).exists?
+    me.follow(she)
+    assert me.active_relationships.where(following_id: she.id).exists?
+  end
+
+  test '#unfollow' do
+    me = User.create!(email: 'me@example.com', password: 'passsword')
+    she = User.create!(email: 'she@example.com', password: 'passsword')
+
+    me.active_relationships.find_or_create_by!(following_id: she.id)
+    me.unfollow(she)
+    assert_not me.active_relationships.where(following_id: she.id).exists?
   end
 end
