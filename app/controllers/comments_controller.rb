@@ -12,8 +12,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
-    redirect_to @content, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    if @comment.user == current_user
+      @comment.destroy
+      redirect_to @content, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    else
+      redirect_to @content
+    end
   end
 
   def set_comment
