@@ -12,38 +12,38 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test '#following?' do
-    me = User.create!(email: 'me@example.com', password: 'passsword')
-    she = User.create!(email: 'she@example.com', password: 'passsword')
+    alice = users(:alice)
+    bob = users(:bob)
 
-    assert_not me.following?(she)
-    me.active_relationships.find_or_create_by!(following_id: she.id)
-    assert me.following?(she)
+    assert_not alice.following?(bob)
+    alice.active_relationships.find_or_create_by!(following_id: bob.id)
+    assert alice.following?(bob)
   end
 
   test '#followed_by?' do
-    me = User.create!(email: 'me@example.com', password: 'passsword')
-    she = User.create!(email: 'she@example.com', password: 'passsword')
+    alice = users(:alice)
+    bob = users(:bob)
 
-    assert_not me.following?(she)
-    me.active_relationships.find_or_create_by!(following_id: she.id)
-    assert me.following?(she)
+    assert_not alice.following?(bob)
+    alice.active_relationships.find_or_create_by!(following_id: bob.id)
+    assert alice.following?(bob)
   end
 
   test '#follow' do
-    me = User.create!(email: 'me@example.com', password: 'passsword')
-    she = User.create!(email: 'she@example.com', password: 'passsword')
+    alice = users(:alice)
+    bob = users(:bob)
 
-    assert_not me.active_relationships.where(following_id: she.id).exists?
-    me.follow(she)
-    assert me.active_relationships.where(following_id: she.id).exists?
+    assert_not alice.active_relationships.where(following_id: bob.id).exists?
+    alice.follow(bob)
+    assert alice.active_relationships.where(following_id: bob.id).exists?
   end
 
   test '#unfollow' do
-    me = User.create!(email: 'me@example.com', password: 'passsword')
-    she = User.create!(email: 'she@example.com', password: 'passsword')
+    alice = users(:alice)
+    bob = users(:bob)
 
-    me.active_relationships.find_or_create_by!(following_id: she.id)
-    me.unfollow(she)
-    assert_not me.active_relationships.where(following_id: she.id).exists?
+    alice.active_relationships.find_or_create_by!(following_id: bob.id)
+    alice.unfollow(bob)
+    assert_not alice.active_relationships.where(following_id: bob.id).exists?
   end
 end
