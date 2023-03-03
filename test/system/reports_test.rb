@@ -16,8 +16,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_path
     assert_selector 'h1', text: '日報'
 
-    assert_text @report.title
-    assert_text @report.user.name_or_email
+    assert_text 'Railsでテストを書く'
+    assert_text 'alice'
   end
 
   test 'creating a report' do
@@ -38,8 +38,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_link '詳細', match: :first
 
-    assert_text @report.title
-    assert_text @report.content
+    assert_text 'Railsでテストを書く'
+    assert_text 'たのしかった！'
 
     click_on '編集'
     fill_in '内容', with: '頑張った'
@@ -53,10 +53,14 @@ class ReportsTest < ApplicationSystemTestCase
 
   test 'destroying a Book' do
     visit reports_url
+
+    assert_text 'Railsでテストを書く'
+
     page.accept_confirm do
       click_link '削除', match: :first
     end
 
     assert_text '日報が削除されました。'
+    assert_no_text 'Railsでテストを書く'
   end
 end
