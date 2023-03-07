@@ -17,7 +17,9 @@ class ReportsTest < ApplicationSystemTestCase
     assert_selector 'h1', text: '日報'
 
     assert_text 'Railsでテストを書く'
-    assert_text 'alice'
+    within(:xpath, '//table/tbody/tr[1]/td[2]') do
+      assert_text 'alice'
+    end
   end
 
   test 'creating a report' do
