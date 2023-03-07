@@ -11,12 +11,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'Foo.Bar', user.name_or_email
   end
 
-  test '#following?' do
+  test '#follow_to_#following?' do
     alice = users(:alice)
     bob = users(:bob)
 
     assert_not alice.following?(bob)
-    alice.active_relationships.find_or_create_by!(following_id: bob.id)
+    alice.follow(bob)
     assert alice.following?(bob)
   end
 
@@ -24,18 +24,9 @@ class UserTest < ActiveSupport::TestCase
     alice = users(:alice)
     bob = users(:bob)
 
-    assert_not alice.following?(bob)
-    alice.active_relationships.find_or_create_by!(following_id: bob.id)
-    assert alice.following?(bob)
-  end
-
-  test '#follow' do
-    alice = users(:alice)
-    bob = users(:bob)
-
-    assert_not alice.active_relationships.where(following_id: bob.id).exists?
-    alice.follow(bob)
-    assert alice.active_relationships.where(following_id: bob.id).exists?
+    assert_not alice.followed_by?(bob)
+    bob.active_relationships.find_or_create_by!(following_id: alice.id)
+    assert alice.followed_by?(bob)
   end
 
   test '#unfollow' do
