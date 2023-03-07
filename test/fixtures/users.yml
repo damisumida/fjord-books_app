@@ -10,5 +10,6 @@ alice:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 bob:
+  name: 'bob'
   email: 'bob@example.com'
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
