@@ -25,16 +25,17 @@ class UserTest < ActiveSupport::TestCase
     bob = users(:bob)
 
     assert_not alice.followed_by?(bob)
-    bob.active_relationships.find_or_create_by!(following_id: alice.id)
+    bob.follow(alice)
     assert alice.followed_by?(bob)
   end
 
-  test '#unfollow' do
+  test 'follow/unfollow/following?/followed_by?' do
     alice = users(:alice)
     bob = users(:bob)
 
-    alice.active_relationships.find_or_create_by!(following_id: bob.id)
+    bob.follow(alice)
+    assert alice.following?(bob)
     alice.unfollow(bob)
-    assert_not alice.active_relationships.where(following_id: bob.id).exists?
+    assert_not alice.following?(bob)
   end
 end
